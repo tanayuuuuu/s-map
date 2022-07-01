@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### サイト名
+s-map
 
-Things you may want to cover:
 
-* Ruby version
+## サイト概要
+災害時に備え、おすすめの避難場所や災害グッズを販売しているお店を、レビューとイイね数で比較・検討できるサイト
 
-* System dependencies
+### サイトテーマ
+災害発生時、あるいは災害発生前に見ることで、災害時に役立つ場所の詳細な情報を得ることが出来る。また、それらを投稿することもできる。
+SNS・コミュニティ・レビューの複合サイト？？（←未定＆自分でよくわかっていません）
 
-* Configuration
 
-* Database creation
+### テーマを選んだ理由
+30年以内に70％の確率で発生すると言われている「首都直下地震」の被害想定の見直しがされたタイミングで他県から東京に引っ越し。
+家族から心配の声があり、自身で災害発生時の避難場所等を確認していたが、SNSのように手軽にかつレビュー等の詳細な情報を得られるサイトがなかったため作成いたしました。
 
-* Database initialization
 
-* How to run the test suite
+### ターゲットユーザ
+アプリを使用することが出来る人全
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### 主な利用シーン
+災害発生時の準備として・災害発生時に避難する際の情報ツールとして
 
-* ...
+
+## 設計書
+未着手
+
+
+## 開発環境
+
+- OS：Windows11
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails6.1.6
+- JS ライブラリ：jQuery bootstrap
+- IDE：Cloud9
+
+
+## 使用素材
+
+- Fontawesome,Google Maps API
