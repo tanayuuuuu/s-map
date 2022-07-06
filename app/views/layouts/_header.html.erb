@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <h1>s-map</h1>
+    </div>
+    <div class="col-md-4">
+      防災情報サイトs-mapへようこそ。
+      このサイトでは、東京23区内で地図上に表示されている場所の
+      防災に関する情報をコメント及びタグを付け投稿できます。
+      また、それらを閲覧し、保存しておくこができます。
+      投稿及び閲覧には会員登録が必要です。→　会員登録は<%= link_to "こちら", new_user_registration_path %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "ログイン", new_user_session_path %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "管理者の方はこちら", new_admin_session_path,class: "btn btn-warning" %><br/>
+      <%= link_to "サイトについて", homes_about_path %>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  devise_for :admins, controllers: {
-  sessions: "admin/sessions"
+  sessions: "admins/sessions"
 }
   namespace :admin do
     root "homes#top"
+    get "/homes/about" =>"homes#about"
+
     resources :comments, only: [:index]
     resources :posts, only: [:index, :show]
     resources :categories, except: [:new, :show, :destroy]
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   sessions: 'users/sessions'
 }
   root "homes#top"
+  get "/homes/about" =>"homes#about"
   get "/map_request_path", to: "application#map", as: "map_request"
   resources :users, except: [:new, :destroy] do
     resources :posts, except: [:index] do
