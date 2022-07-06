@@ -3,7 +3,14 @@ Rails.application.routes.draw do
  devise_for :admins, controllers: {
   sessions: "admins/sessions"
 }
-  namespace :admin do
+
+devise_for :users, controllers: {
+  registrations: "users/registrations",
+  sessions: 'users/sessions'
+}
+
+
+   namespace :admin do
     root "homes#top"
     get "/homes/about" =>"homes#about"
 
@@ -13,10 +20,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create, :destroy]
   end
 
-   devise_for :users, controllers: {
-  registrations: "users/registrations",
-  sessions: 'users/sessions'
-}
+
   root "homes#top"
   get "/homes/about" =>"homes#about"
   get "/map_request_path", to: "application#map", as: "map_request"

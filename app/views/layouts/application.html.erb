@@ -15,7 +15,7 @@
        <%= render "layouts/header" %>
     </header>
 
-    <%= form_with url: map_request_path, remote: true, method: :get do |f| %>
+    <%= form_with url: map_request_path, local: false, method: :get do |f| %>
       <%= f.text_field :address %>
       <%= f.submit "地図検索" %>
     <% end %>
@@ -30,17 +30,25 @@
     </style>
 
     <script>
-
+    let mapInstance;
     function initMap(){
-
+      console.log("hoge");
       mapInstance = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 35.680, lng: 139.767},
       zoom: 12
       });
     }
+    if(window.google){
+      initMap();
+    } else{
+      $.ajax('https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-rdQVpBg1i4-BwQ6ofhHtnYa8tox3ac&callback=initMap', {
+          crossDomain: true,
+          dataType: 'script'
+      });
+    }
+
     </script>
 
-    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-rdQVpBg1i4-BwQ6ofhHtnYa8tox3ac&callback=initMap"></script>-->
 
     <%= yield %>
   </body>

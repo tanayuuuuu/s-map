@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
 
 
   def map
-    result = Geocorder.serach(params[:address])
-    @latlng = results.first.cordinates
-    respond_to do |format|
-      map.js
-    end
-  end
+    result = Geocoder.search(params[:address])
+    @latlng = result.first.coordinates
+    # format.js
+    # render :map
+    render 'layouts/map'
 
+  end
 end
