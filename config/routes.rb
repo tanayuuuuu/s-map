@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   sessions: 'users/sessions'
 }
   root "homes#top"
+  get "/map_request_path", to: "application#map", as: "map_request"
   resources :users, except: [:new, :destroy] do
     resources :posts, except: [:index] do
       resources :comments, except: [:show]
