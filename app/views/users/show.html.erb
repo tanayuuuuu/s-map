@@ -1,2 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>マイページ</h2>
+        <table class="table table-bordered table-sm">
+            <thead class=""></thead>
+              <tr><th>氏名</th><td><%= current_user.name %></td></tr>
+              <tr><th>フリガナ</th><td><%= current_user.name_kana %></td></tr>
+              <tr><th>メールアドレス</th><td><%= current_user.email %></td></tr>
+              <tr><th>郵便番号</th><td><%= current_user.post_code %></td></tr>
+              <tr><th>住所</th><td><%= current_user.address %></td></tr>
+              <tr><th>電話番号</th><td><%= current_user.phone_number %></td></tr>
+        </table>
+         <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+

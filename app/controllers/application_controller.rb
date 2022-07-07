@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
 
-
   def map
     result = Geocoder.search(params[:address])
     @latlng = result.first.coordinates

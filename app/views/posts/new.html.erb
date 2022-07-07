@@ -1,18 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="">
-      <%= form_with model: (model:[@posts, @categories]), remote: true, do |f| %>
+    <div class="col-md-8 mt-2">
+      <%= form_with model: @posts, local: true do |f| %>
+      <h2>新規投稿</h2>
         <%= f.label :body, "画像を選択してください" %>
-        <%= f.file_field :image, accept: "image/*,video/*" %>
+        <%= f.fields_for :image, accept: "image/*,video/*" %>
         <br/>
-        <%= f.label: place_name, "場所の名前" %>
+        <%= f.label :place_name, "場所の名前" %>
         <%= f.text_field :place_name %>
         <br/>
         <%= f.label :body, "詳細説明" %>
         <%= f.text_area :body %>
         <br/>
         <%= f.label :name, "カテゴリ名" %>
-        <% [“すべての災害に対応”,”危険な場所”,”地震”,”津波”,”洪水”,”防災グッズ”].each do |name| %>
+        <% ["すべての災害に対応","危険な場所","地震","津波","洪水","防災グッズ"].each do |name| %>
         <%= f.check_box :name, {multiple: true}, name, nil %>
         <%= name %>
         <% end %>
