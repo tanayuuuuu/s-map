@@ -12,7 +12,13 @@
         <%#= link_to "コメント一覧", user_post_comments_path(current_user.posts) %>
       </li>
       <li>
+        <%= link_to "投稿一覧", user_posts_path(current_user) %>
+      </li>
+      <li>
         <%= link_to "ユーザー情報", user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "新規投稿", new_user_post_path(current_user) %>
       </li>
       <li>
         <%= link_to "サイトについて", homes_about_path %>
@@ -40,7 +46,13 @@
       <% end %>
     </div>
     <div class="col-md-3">
-      <%= link_to "管理者の方はこちら", new_admin_session_path,class: "btn btn-warning" %><br/>
+      <% if admin_signed_in? %>
+      <li>
+        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <%= link_to "管理者の方はこちら", new_admin_session_path,class: "btn btn-warning" %>
+      <% end %><br/>
       <%= link_to "サイトについて", homes_about_path %>
     </div>
   </div>
