@@ -37,11 +37,11 @@
     <div class="col-md-2">
       <% if user_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
       </li>
       <% else %>
       <li>
-         <%= link_to "ログイン", new_user_session_path %>
+         <%= link_to "ユーザーログイン", new_user_session_path %>
       </li>
       <% end %>
     </div>
@@ -49,6 +49,12 @@
       <% if admin_signed_in? %>
       <li>
         <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "カテゴリ一覧", admin_categories_path %>
+      </li>
+      <li>
+        <%= link_to "ユーザー一覧", admin_users_path %>
       </li>
       <% else %>
       <%= link_to "管理者の方はこちら", new_admin_session_path,class: "btn btn-warning" %>

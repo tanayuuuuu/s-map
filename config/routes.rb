@@ -16,7 +16,7 @@ devise_for :users, controllers: {
 
     resources :comments, only: [:index]
     resources :posts, only: [:index, :show]
-    resources :categories, except: [:new, :show, :destroy]
+    resources :categories, except: [:show]
     resources :users, except: [:new, :create, :destroy]
   end
 
@@ -29,7 +29,7 @@ devise_for :users, controllers: {
       resources :comments, except: [:show]
     end
   end
-  resources :categories, only: [:index]
+  resources :categories, except: [:index]
   resources :post_categories
 
 end
