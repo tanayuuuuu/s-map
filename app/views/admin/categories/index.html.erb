@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4 mt-2">
       <h1>カテゴリ一覧</h1>
-      <%= form_with model: @category, local: true do |f| %>
+      <%= form_with model: @category, url: admin_categories_path, local: true do |f| %>
       <%= f.label :name, "カテゴリ名" %><br/>
       <%= f.text_field :name, class: "form_control" %><br/>
       <%= f.submit "カテゴリを追加する", class: "btn btn-success" %>
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= @categories.each do |category| %>
+          <% @categories.each do |category| %>
             <tr>
               <td>
                 <%= category.name %>
@@ -27,7 +27,7 @@
                 <%= link_to "カテゴリを編集", edit_admin_category_path(category) %>
               </td>
               <td>
-                <%= link_to "カテゴリを削除する", category_path(category), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "カテゴリを削除する", admin_category_path(category), method: :delete, class: "btn btn-danger" %>
               </td>
             </tr>
             <% end %>

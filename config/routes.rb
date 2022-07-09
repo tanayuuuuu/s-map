@@ -24,12 +24,14 @@ devise_for :users, controllers: {
   root "homes#top"
   get "/homes/about" =>"homes#about"
   get "/map_request_path", to: "application#map", as: "map_request"
+  get 'users/quit' => "users#quit"
+  get 'users/out' => "users#out"
   resources :users, except: [:new, :destroy] do
     resources :posts do
       resources :comments, except: [:show]
     end
   end
-  resources :categories, except: [:index]
+  resources :categories, only: [:index, :show]
   resources :post_categories
 
 end

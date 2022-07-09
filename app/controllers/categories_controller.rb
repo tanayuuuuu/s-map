@@ -1,7 +1,12 @@
 class CategoriesController < ApplicationController
+
   def index
+    @categories = Category.all
   end
 
-  def create
+  def show
   end
+
+  private
+
 end

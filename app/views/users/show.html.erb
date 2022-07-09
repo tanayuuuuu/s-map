@@ -12,6 +12,7 @@
               <tr><th>電話番号</th><td><%= current_user.phone_number %></td></tr>
         </table>
          <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
+         <%= link_to "退会する", users_quit_path, class: "btn btn-danger" %>
     </div>
   </div>
 </div>

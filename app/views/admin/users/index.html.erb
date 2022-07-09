@@ -8,7 +8,7 @@
               <tr><th>ユーザーID</th><td><%= user.id %></td></tr>
               <tr><th>氏名</th><td><%= user.name %></td></tr>
               <tr><th>住所</th><td><%= user.address %></td></tr>
-              <td><%= link_to "編集する", edit_admin_user_path(user.id), class:"btn btn-success" %></td>
+              <td><%= link_to "詳細情報", admin_user_path(user.id), class:"btn btn-warning" %></td>
         </table>
         <% end %>
     </div>
