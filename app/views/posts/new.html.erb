@@ -13,13 +13,10 @@
         <%= f.text_area :body %>
         <br/>
         <%= f.label :name, "カテゴリ名" %>
-        <%= f.fields_for :post_categories, local: true do |f| %>
-        <% @categories.each do |category| %>
-        <%= f.check_box :id, {multiple: true}, category.id, nil %>
-        <%= category.name %>
+        <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |b| %>
+          <%= b.label { b.check_box + b.text } %>
         <% end %>
-        <% end %>
-        <br/>
+        <br>
         <%= f.submit "投稿" %>
       <% end %>
     </div>

@@ -6,5 +6,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+  
   
 end

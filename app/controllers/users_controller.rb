@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def quit
+
   end
 
   def out
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :name_kana, :email, :post_code, :address, :phone_number)
+    params.require(:user).permit(:name, :name_kana, :email, :post_code, :address, :phone_number, :is_deleted)
   end
 
 end

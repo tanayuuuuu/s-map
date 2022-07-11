@@ -1,2 +1,21 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-2">
+      <h2>投稿詳細</h2>
+      <table class="table table-bordered table-sm">
+            <thead class=""></thead>
+              <tr><th>場所の画像</th><td><%= image_tag @post.image, size:"150x150" %></td></tr>
+              <tr><th>場所の名前</th><td><%= @post.place_name %></td></tr>
+              <tr><th>住所</th><td><%= @post.address %></td></tr>
+              <tr><th>詳細</th><td><%= @post.body %></td></tr>
+              <tr><th>カテゴリ</th><td><%= @post.categories.pluck(:name).join(", ") %></td></tr>
+              <tr><th>緯度</th></th><td><%= @post.latitude %></td></tr>
+              <tr><th>経度</th><td><%= @post.longitude %></td></tr>
+              <% if @user.id == current_user.id %>
+                <td><%= link_to "編集する", edit_user_post_path(@post.user, @post), class:"btn btn-success" %></td>
+                <td><%= link_to "削除する", user_post_path(@post.user, @post), method: :delete,class:"btn btn-warning" %></td>
+              <% end %>
+        </table>
+    </div>
+  </div>
+</div>

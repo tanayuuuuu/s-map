@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col-md-8 mt-2">
       <h1>ユーザー退会</h1>
+      <div class="quit-message">
+      <h4>退会すると投稿機能及び、投稿した一覧を閲覧することが出来なくなります。<br/>
+      退会する場合は「退会する」をクリックしてください。</h4>
+      </div>
+
+
+        <%= link_to "退会しない", user_path(current_user), class:"btn btn-primary" %>
+        <%= link_to "退会する", users_out_path, method: :patch, class:"btn btn-danger" %>
+      </div>
     </div>
   </div>
-</div>

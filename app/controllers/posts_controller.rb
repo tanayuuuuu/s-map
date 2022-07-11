@@ -6,35 +6,40 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
-      # save成功時
-      category_ids = params[:post][:post_categories]
-      category_ids.each do |id|
-        # 中間てーぶるへの挿入
-      end
     end
     redirect_to user_posts_path
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @categories = Category.all
   end
 
   def index
-
+    @posts = Post.all
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+   
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_posts_path
   end
 
   def update
+    @post = Post.find(params[:id])
   end
 
   private
   def post_params
-    params.require(:post).permit(:place_name, :body, :latitude, :longitude, :image, :name, :category_id)
+    params.require(:post).permit(:place_name, :body, :latitude, :longitude, :image, :name, category_ids: [])
   end
 
 end

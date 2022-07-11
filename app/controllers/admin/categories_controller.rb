@@ -22,6 +22,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
+    # add_categoryと同じ意味です
     # @category = Category.find(params[:id])
   end
 
