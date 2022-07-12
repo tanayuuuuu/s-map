@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-before action :get_gmap_post
+before_action :get_gmap_post
 
 
   def map
@@ -16,6 +16,6 @@ before action :get_gmap_post
   private
 
   def get_gmap_post
-    @post = Post.all
+    @posts = Post.all
   end
 end

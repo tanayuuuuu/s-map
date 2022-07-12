@@ -16,6 +16,12 @@
         <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |b| %>
           <%= b.label { b.check_box + b.text } %>
         <% end %>
+        <br/> 
+        <%= f.label :latitude, "緯度" %>
+        <%= f.text_field :latitude, :value => "緯度", id: :lat %>
+        <br/>
+        <%= f.label :longitude, "経度" %>
+        <%= f.text_field :longitude, :value => "経度", id: :lon %>
         <br>
         <%= f.submit "投稿" %>
       <% end %>
