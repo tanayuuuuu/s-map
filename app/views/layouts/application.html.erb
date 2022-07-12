@@ -29,9 +29,6 @@
     }
     </style>
 
-    <script>
-      var mapHandler = Gmaps.build('Google');
-    </script>
     <script>//最初に表示するMapの設定
     let mapInstance;　　　　　//mapInstanceを変数宣言
     function initMap(){　　　　　//関数initMapを定義
@@ -39,10 +36,30 @@
       center: {lat: 35.680, lng: 139.767},  //初期表示の場所
       zoom: 12　　　　　　　　　　　　　　　//初期表示の縮尺
       });
+
+      if (<%= current_page?(root_path) %>){
+        alert("ここはトップページです");
+        return;
+      }
+
+
+       if (false<%#= @post.latitude.present? %>){
+         document.getElementById('lat').value = results[0].geometry.location.lat();
+
+        google.maps.event.addListener( marker, 'dragend', function(ev){
+        // イベントの引数evの、プロパティ.latLngが緯度経度
+          document.getElementById('lat').value = ev.latLng.lat();
+          document.getElementById('lng').value = ev.latLng.lng();
+        });
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+
       var position = new google.maps.LatLng({　//変数position = 空箱として'lat''lng'に緯度経度を設定
         "lat": 35.680,
-        "lng": 139.767,<%#= @post.longitude %>//投稿に緯度経度が保存できたら変更
+        "lng": 139.767, <%#= @post.longitude %>//投稿に緯度経度が保存できたら変更
       });
+
 
 
       var marker = [];　　　//変数markerを空の配列とする
@@ -57,20 +74,61 @@
           content: <%= post.place_name %>　　　　　　　//contentsには投稿された場所の名前が入る
         });
 
-        marker.addListener('click', function() {　　　　//クリックイベントでクリックしたピンの情報を表示する
+        marker.addListener('click', function() {　　　　//クリックイベントでクリックしたピンの情報を表示する？？
           info[<%=i%>].open(mapInstance, marker[<%=i%>]);
         });
       <% end %>
 
 
     }
-    if(window.google){
+    if(window.google){  //gmapの表示（APIの取得）
       initMap();
     } else{
       $.ajax('https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-rdQVpBg1i4-BwQ6ofhHtnYa8tox3ac&callback=initMap', {
           crossDomain: true,
           dataType: 'script'
       });
+    }
+
+    if (<%= current_page?(new_user_post_path(current_user)) %>){  //この行ログアウトすると効かなくなる！！
+      //検索後のマップ作成
+      let geocoder
+      let aft
+      function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+              //マーカーが複数できないようにする
+              if (aft == true){
+                  marker.setMap(null);
+              }
+
+              //新しくマーカーを作成する
+              map.setCenter(results[0].geometry.location);
+                  marker = new google.maps.Marker({
+                  map: mapInstace,
+                  position: results[0].geometry.location,
+                  draggable: true // ドラッグ可能にする
+              });
+
+              //二度目以降か判断
+              aft = true
+
+              //検索した時に緯度経度を入力する
+              document.getElementById('lat').value = results[0].geometry.location.lat();
+              document.getElementById('lng').value = results[0].geometry.location.lng();
+
+              // マーカーのドロップ（ドラッグ終了）時のイベント
+              google.maps.event.addListener( marker, 'dragend', function(ev){
+                  // イベントの引数evの、プロパティ.latLngが緯度経度
+                  document.getElementById('lat').value = ev.latLng.lat();
+                  document.getElementById('lng').value = ev.latLng.lng();
+              });
+          } else {
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });
+      }
     }
     </script>
 
