@@ -14,3 +14,27 @@
     </div>
   </div>
 </div>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 100%;
+}
+</style>
+
+<!-- js部分 -->
+<script>
+/*
+      //複数マーカー ここから
+      <%# @posts.each do |post|%>
+        ( function() {
+          let markerLatLng = new google.maps.LatLng({latitude: <%#= post.latitude %>, longitude: <%#= post.longitude %>}); // 緯度経度のデータ作成
+          let marker = new google.maps.Marker({
+            position: markerLatLng,
+            map: mapInstance
+          });
+      })();
+      <%# end %>
+      //複数マーカー ここまで
+</script>
