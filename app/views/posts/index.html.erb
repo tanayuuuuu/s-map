@@ -9,32 +9,17 @@
               <tr><th>場所の画像</th><td><%= image_tag post.image, size:"150x150" %></td></tr>
               <tr><th>場所の名前</th><td><%= post.place_name %></td></tr>
               <td><%= link_to "詳細情報", user_post_path(post.user, post), class:"btn btn-warning" %></td>
-        </table>
-        <% end %>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mt-2">
+      <%= form_tag(posts_search_path, method: "get") do %>
+      <%= select_tag :name, options_from_collection_for_select(Category.all, :id, :name) %>
+      <%= submit_tag "絞り込み" %>
+      <% end %>
     </div>
   </div>
 </div>
-<div id='map'></div>
-
-<style>
-#map {
-  height: 600px;
-  width: 100%;
-}
-</style>
-
-<!-- js部分 -->
-<script>
-/*
-      //複数マーカー ここから
-      <%# @posts.each do |post|%>
-        ( function() {
-          let markerLatLng = new google.maps.LatLng({latitude: <%#= post.latitude %>, longitude: <%#= post.longitude %>}); // 緯度経度のデータ作成
-          let marker = new google.maps.Marker({
-            position: markerLatLng,
-            map: mapInstance
-          });
-      })();
-      <%# end %>
-      //複数マーカー ここまで
-</script>

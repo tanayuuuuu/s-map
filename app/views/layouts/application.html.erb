@@ -40,6 +40,7 @@
         zoom: 12　　　　　　　　　　　　　　　//初期表示の縮尺
       });
 
+
       var position = new google.maps.LatLng({　//変数position = 空箱として'lat''lng'に緯度経度を設定
         "lat": 35.680,
         "lng": 139.767, <%#= @post.longitude %>//投稿に緯度経度が保存できたら変更
@@ -48,7 +49,31 @@
       var marker = [];　　　//変数markerを空の配列とする
       var info = [];　　　　//変数infoを空の配列とする
 
-    }
+       <% if signed_in? && current_page?(user_posts_path(current_user)) %>
+
+               <% @posts.each do |post| %>
+                  (function() {
+                  let markerLatLng = new google.maps.LatLng({lat: <%= post.latitude %>, lng: <%= post.longitude %>}); // 緯度経度のデータ作成
+                  let marker = new google.maps.Marker({
+                    position: markerLatLng,
+                    map: mapInstance
+                  });
+
+
+                  //マーカーをクリックしたとき、詳細情報を表示
+                  var infowindow = new google.maps.InfoWindow({
+                  position: markerLatLng,
+                  content: "<a href='https://78c88ab6be11477f91f178f82f9515a5.vfs.cloud9.ap-northeast-1.amazonaws.com/users/2/posts/" + <%= post.id %>  + "'" + "><%= post.place_name %></a>"
+                }); //ここで詳細ページへのリンクを表示させる
+                marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                });
+
+                  })();
+                <% end %>
+                <% end %>
+
+          }
 
        //検索後のマップ作成
       function codeAddress(){
@@ -90,17 +115,7 @@
         });
       }
 
-      <% if signed_in? && current_page?(user_posts_path(current_user)) %>
-       <% @posts.each do |post| %>
-        ( function() {
-          let markerLatLng = new google.maps.LatLng({latitude: <%= post.latitude %>, longitude: <%= post.longitude %>}); // 緯度経度のデータ作成
-          let marker = new google.maps.Marker({
-            position: markerLatLng,
-            map: mapInstance
-          });
-      })();
-      <% end %>
-      <% end %> //上の記述が機能していない！！
+
 
 
 

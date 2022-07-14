@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-   
+
   end
 
   def destroy
@@ -35,6 +35,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+  end
+
+  def search
+ 
+    @posts = Post.joins(:post_categories).where('post_categories.category_id = ?', params[:name])
+    render :index
   end
 
   private

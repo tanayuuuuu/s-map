@@ -25,6 +25,7 @@ devise_for :users, controllers: {
   get "/homes/about" =>"homes#about"
   get "/map_request_path", to: "application#map", as: "map_request"
   get 'users/quit' => "users#quit"
+  get "posts/search" => "posts#search"
   patch 'users/out' => "users#out"
   resources :users, except: [:new, :destroy] do
     resources :posts do
