@@ -1,65 +1,67 @@
-<div class="container p-3 mb-2 bg-info text-white">
+<div class="container-fluid p-3 mb-2 bg-info text-white">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 mt-4 ml-4">
       <h1>s-map</h1>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6 mt-5 list-inline">
       <% if user_signed_in? %>
-      <li>
-        <%= link_to "カテゴリ一覧", categories_path %>
-      </li>
-      <li>
-        <%#= link_to "コメント一覧", user_post_comments_path(current_user.posts) %>
-      </li>
-      <li>
-        <%= link_to "投稿一覧", user_posts_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "ユーザー情報", user_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "新規投稿", new_user_post_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "サイトについて", homes_about_path %>
-      </li>
-      <% else %>
-      <li>
-        防災情報サイトs-mapへようこそ。
-      このサイトでは、東京23区内で地図上に表示されている場所の
-      防災に関する情報をコメント及びタグを付け投稿できます。
-      また、それらを閲覧し、保存しておくこができます。
-      投稿及び閲覧には登録が必要です。→　登録は<%= link_to "こちらから", new_user_registration_path %>
-      </li>
+      <ul class="list-group list-group-horizontal list-unstyled">
+        <li class:"list-group-item">
+          <%= link_to "カテゴリ一覧", categories_path, class:"link" %>
+        </li>
+        <li class:"list-group-item">
+          <%#= link_to "コメント一覧", user_post_comments_path(current_user.posts) %>
+        </li>
+        <li class:"list-group-item">
+          <%= link_to "投稿一覧", user_posts_path(current_user), class:"link" %>
+        </li>
+        <li class:"list-group-item">
+          <%= link_to "ユーザー情報", user_path(current_user), class:"link" %>
+        </li>
+        <li class:"list-group-item">
+          <%= link_to "新規投稿", new_user_post_path(current_user), class:"link" %>
+        </li>
+        <li class:"list-group-item">
+          <%= link_to "サイトについて", homes_about_path, class:"link" %>
+        </li>
+        <% else %>
+        <li>
+          防災情報サイトs-mapへようこそ。
+        このサイトでは、東京23区内で地図上に表示されている場所の
+        防災に関する情報をコメント及びタグを付け投稿できます。
+        また、それらを閲覧し、保存しておくこができます。
+        投稿及び閲覧には登録が必要です。→　登録は<%= link_to "こちらから", new_user_registration_path, class:"link" %>
+        </li>
+      </ul>
       <% end %>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-1 mt-5 list-inline">
       <% if user_signed_in? %>
       <li>
-        <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"link" %>
       </li>
       <% else %>
       <li>
-         <%= link_to "ユーザーログイン", new_user_session_path %>
+         <%= link_to "ログイン", new_user_session_path, class:"link" %>
       </li>
       <% end %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 list-inline">
       <% if admin_signed_in? %>
       <li>
-        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class:"link" %>
       </li>
       <li>
-        <%= link_to "カテゴリ一覧", admin_categories_path %>
+        <%= link_to "カテゴリ一覧", admin_categories_path, class:"link" %>
       </li>
       <li>
-        <%= link_to "ユーザー一覧", admin_users_path %>
+        <%= link_to "ユーザー一覧", admin_users_path, class:"link" %>
       </li>
       <% else %>
       <%= link_to "管理者の方はこちら", new_admin_session_path,class: "btn btn-warning" %>
       <% end %><br/>
-      <%= link_to "サイトについて", homes_about_path %>
+      <%= link_to "サイトについて", homes_about_path, class:"link" %>
     </div>
   </div>
 </div>

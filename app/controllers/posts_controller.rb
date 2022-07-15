@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-
+    @comment = Comment.new
   end
 
   def destroy
@@ -38,7 +38,6 @@ class PostsController < ApplicationController
   end
 
   def search
- 
     @posts = Post.joins(:post_categories).where('post_categories.category_id = ?', params[:name])
     render :index
   end

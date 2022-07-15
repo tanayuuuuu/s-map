@@ -5,9 +5,11 @@
       <% @posts.each do |post| %>
       <table class="table table-bordered table-sm">
             <thead class=""></thead>
+             <tr><th>投稿者名</th><td><%= post.user.name %>さん</td></tr>
               <tr><th>投稿ID</th><td><%= post.id %></td></tr>
               <tr><th>場所の画像</th><td><%= image_tag post.image, size:"150x150" %></td></tr>
               <tr><th>場所の名前</th><td><%= post.place_name %></td></tr>
+               <tr><th>コメント</th><td><%= "#{post.comments.count} コメント" %></td></tr>
               <td><%= link_to "詳細情報", user_post_path(post.user, post), class:"btn btn-warning" %></td>
       </table>
       <% end %>

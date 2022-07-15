@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SMap</title>
+    <title>防災情報s-map</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,11 +14,6 @@
     <header>
        <%= render "layouts/header" %>
     </header>
-
-    <%= form_with url: map_request_path, local: false, method: :get do |f| %>
-      <%= f.text_field :address %>
-      <%= f.submit "地図検索" %>
-    <% end %>
 
     <div id='map'>
     </div>

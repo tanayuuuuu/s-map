@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'post_comments/create'
+  get 'post_comments/destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  devise_for :admins, controllers: {
   sessions: "admins/sessions"
@@ -29,7 +31,7 @@ devise_for :users, controllers: {
   patch 'users/out' => "users#out"
   resources :users, except: [:new, :destroy] do
     resources :posts do
-      resources :comments, except: [:show]
+      resources :comments, only: [:create, :destroy]
     end
   end
   resources :categories, only: [:index, :show]
