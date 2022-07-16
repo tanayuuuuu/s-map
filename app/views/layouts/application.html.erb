@@ -39,22 +39,22 @@
     </style>
 
     <script>//最初に表示するMapの設定
-    function initMap(){　　　　　//関数initMapを定義
-      mapInstance = new google.maps.Map(document.getElementById('map'), {　//変数mapInstance = newで空箱とし、id=mapのHTML要素を取得
+    function initMap(){          //関数initMapを定義
+      mapInstance = new google.maps.Map(document.getElementById('map'), {      //変数mapInstance = newで空箱とし、id=mapのHTML要素を取得
         center: {lat: 35.680, lng: 139.767},  //初期表示の場所
-        zoom: 12　　　　　　　　　　　　　　　//初期表示の縮尺
+        zoom: 12                              //初期表示の縮尺
       });
 
 
-      var position = new google.maps.LatLng({　//変数position = 空箱として'lat''lng'に緯度経度を設定
+      var position = new google.maps.LatLng({     //変数position = 空箱として'lat''lng'に緯度経度を設定
         "lat": 35.680,
         "lng": 139.767, <%#= @post.longitude %>//投稿に緯度経度が保存できたら変更
       });
-      var marker = [];　　　//変数markerを空の配列とする
-      var info = [];　　　　//変数infoを空の配列とする
+      var marker = [];   //変数markerを空の配列とする
+      var info = [];     //変数infoを空の配列とする
 
 
-       <% if signed_in? && current_page?(user_posts_path(current_user)) %>
+       <% if signed_in? && current_user.present? && current_page?(user_posts_path(current_user)) %>
 
                <% @posts.each do |post| %>
                   (function() {
@@ -103,7 +103,7 @@
               aft = true;
 
               //検索した時に緯度経度を入力する
-              <% if signed_in? && current_page?(new_user_post_path(current_user)) %>
+              <% if signed_in? && current_user.present? && current_page?(new_user_post_path(current_user)) %>
                 document.getElementById('lat').value = results[0].geometry.location.lat();
                 document.getElementById('lng').value = results[0].geometry.location.lng();
 
@@ -112,7 +112,7 @@
                 // イベントの引数evの、プロパティ.latLngが緯度経度
                   document.getElementById('lat').value = ev.latLng.lat();
                   document.getElementById('lng').value = ev.latLng.lng();
-              　});
+              });
               <% end %>
           } else {
             alert('該当する結果がありませんでした：' + status);
@@ -122,10 +122,10 @@
 
 
   document.addEventListener("turbolinks:load", function() {
-    let mapInstance;　　　　　//mapInstanceを変数宣言
+    let mapInstance;      //mapInstanceを変数宣言
 
     if(window.google){  //gmapの表示（APIの取得）
-    　if (!mapInstance)
+      if (!mapInstance)
         initMap();
     } else{
       $.ajax('https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-rdQVpBg1i4-BwQ6ofhHtnYa8tox3ac&callback=initMap', {
@@ -139,7 +139,7 @@
   </body>
   <footer class="foot">
     <div>
-      <a>©　2022 yuya-tanaka All rights reserved</a>
+      <a>© 2022 yuya-tanaka All rights reserved</a>
     </div>
   </footer>
 </html>
