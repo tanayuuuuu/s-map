@@ -1,33 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mt-2">
+    <div class="col-md-12 mt-2">
       <%= form_with model: @post, url: user_posts_path, local: true do |f| %>
       <h2>新規投稿</h2>
-        <%= f.label :image, "画像を選択してください" %>
-        <%= f.file_field :image, accept: "image/*" %>
-        <br/>
-        <%= f.label :place_name, "場所の名前" %>
-        <%= f.text_field :place_name %>
-        <br/>
-        <%= f.label :body, "詳細説明" %>
-        <%= f.text_area :body %>
-        <br/>
-        <%= f.label :name, "カテゴリ名" %>
-        <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |b| %>
-          <%= b.label { b.check_box + b.text } %>
-        <% end %>
-        <br/>
-        <%= f.label :latitude, "緯度" %>
-        <%= f.text_field :latitude, :value => "緯度", id: :lat %>
-        <br/>
-        <%= f.label :longitude, "経度" %>
-        <%= f.text_field :longitude, :value => "経度", id: :lng %>
-        <br>
+        <ul style="list-style: none">
+          <li class="d-flex justify-content-between mb-3">
+            <%= f.label :place_name, "場所の名前" %>
+            <%= f.text_field :place_name, style: "width: 150px" %>
+          <li>
+          <li class="d-flex justify-content-between">
+            <%= f.label :body, "詳細説明" %>
+            <%= f.text_area :body, style: "width: 150px" %>
+          </li>
+          <li class="d-flex justify-content-between"><%= f.label :name, "カテゴリ名" %></li>
+          <li class="mb-3">
+              <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
+          </li>
+          <li class="d-flex justify-content-between"><%= f.label :image, "画像" %></li>
+            <li class="mb-3">
+              <%= f.file_field :image, accept: "image/*" %>
+            </li>
+          <li class="d-flex justify-content-between mb-2">
+              <%= f.label :latitude, "緯度" %>
+              <%= f.text_field :latitude, :value => "緯度", id: :lat %>
+          </li>
+          <li class="d-flex justify-content-between">
+              <%= f.label :longitude, "経度" %>
+              <%= f.text_field :longitude, :value => "経度", id: :lng %>
+          </li>
+        </ul>
         <%= f.submit "投稿" %>
       <% end %>
     </div>
   </div>
 </div>
-<script>
-  
-</script>

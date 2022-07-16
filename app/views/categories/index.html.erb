@@ -13,7 +13,7 @@
         <tbody>
           <% @categories.each do |category| %>
             <tr>
-              <td>
+              <td class="bg-white">
                 <%= category.name %>
               </td>
               <% if admin_signed_in? %>

@@ -3,9 +3,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
        body {
          font-family: 'Noto Sans JP', sans-serif;
+         background-color: #DDDDDD;
        }
 
        .link {
          text-decoration: none;
          color: white ;
+                font-size: 20px;
+       }
+
+       .s-map {
+              color: white ;
+       }
+
+       .foot {
+              background-color: #008080;
+              height: 50px;
+              text-align: center;
+              position: fixed;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              padding-top: 15px;
+       }
+
+       .info {
+              font-size: 20px;
        }

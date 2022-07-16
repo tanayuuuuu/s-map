@@ -15,20 +15,30 @@
        <%= render "layouts/header" %>
     </header>
 
-    <div id='map'>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4">
+           <div><%= yield %></div>
+        </div>
+        <div class="col-8">
+          <div id='map'>
+          </div>
+        </div>
+      </div>
     </div>
+
+
     <input id="addressText">
     <input type="button" value="検索" onclick="codeAddress()">
 
 
     <style>
-    #map{
-      height: 400px;
+    #map {
+      height: 540px;
     }
     </style>
 
     <script>//最初に表示するMapの設定
-
     function initMap(){　　　　　//関数initMapを定義
       mapInstance = new google.maps.Map(document.getElementById('map'), {　//変数mapInstance = newで空箱とし、id=mapのHTML要素を取得
         center: {lat: 35.680, lng: 139.767},  //初期表示の場所
@@ -40,9 +50,9 @@
         "lat": 35.680,
         "lng": 139.767, <%#= @post.longitude %>//投稿に緯度経度が保存できたら変更
       });
-
       var marker = [];　　　//変数markerを空の配列とする
       var info = [];　　　　//変数infoを空の配列とする
+
 
        <% if signed_in? && current_page?(user_posts_path(current_user)) %>
 
@@ -67,8 +77,8 @@
                   })();
                 <% end %>
                 <% end %>
-
           }
+
 
        //検索後のマップ作成
       function codeAddress(){
@@ -111,9 +121,6 @@
       }
 
 
-
-
-
   document.addEventListener("turbolinks:load", function() {
     let mapInstance;　　　　　//mapInstanceを変数宣言
 
@@ -129,7 +136,10 @@
   })
     </script>
 
-
-    <%= yield %>
   </body>
+  <footer class="foot">
+    <div>
+      <a>©　2022 yuya-tanaka All rights reserved</a>
+    </div>
+  </footer>
 </html>

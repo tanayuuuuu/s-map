@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mt-2">
+    <div class="col-md-12 mt-2">
       <h2>投稿詳細</h2>
       <table class="table table-bordered table-sm">
             <thead class=""></thead>
@@ -18,7 +18,7 @@
                     <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%#= comment.comment_content %>
                     <% end %>
                 </td>
-                       <!--全然動かなかったため、URLと引数も明示的に指定-->
+                <td>    <!--全然動かなかったため、URLと引数も明示的に指定-->
                   <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
                     <%= f.text_area :comment_contents, placeholder: "コメントをここに" %>
                     <%= f.submit "送信する" %>

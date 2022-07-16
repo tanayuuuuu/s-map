@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
 
-  def create
+  def create     #paramsは中間テーブルのためpost_idから取得
     @post = Post.find(params[:post_id])
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
