@@ -14,7 +14,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @categories = Category.all
+    @categories = Category.new
+    if @post.update
+      redirect_to user_posts_path
+    else
+      render :index
+    end
   end
 
   def index
@@ -43,6 +48,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:place_name, :body, :latitude, :longitude, :image, :name, category_ids: [])
   end
