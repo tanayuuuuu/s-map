@@ -1,16 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h2>マイページ</h2>
-        <table class="table table-bordered table-sm">
-            <thead class=""></thead>
-              <tr><th>氏名</th><td><%= current_user.name %></td></tr>
-              <tr><th>フリガナ</th><td><%= current_user.name_kana %></td></tr>
-              <tr><th>メールアドレス</th><td><%= current_user.email %></td></tr>
-              <tr><th>郵便番号</th><td><%= current_user.post_code %></td></tr>
-              <tr><th>住所</th><td><%= current_user.address %></td></tr>
-              <tr><th>電話番号</th><td><%= current_user.phone_number %></td></tr>
-        </table>
+    <div class="col">
+      <h3>マイページ</h3>
+      <ul class="list-unstyled">
+        <li>
+          <label>氏名</label>
+          <%= current_user.name %>
+        <li>
+          <lebal>フリガナ</lebal>
+          <%= current_user.name_kana %>
+        </li>
+        <li>
+          <label>E-mail</label>
+          <%= current_user.email %>
+        </li>
+        <li>
+          <label>郵便番号</label>
+          <%= current_user.post_code %>
+        </li>
+        <li>
+          <label>住所</label>
+          <%= current_user.address %>
+        </li>
+        <li>
+          <label>電話番号</label>
+           <%= current_user.phone_number %>
+        </li>
+      </ul>
          <% if user_signed_in? && @user.id == current_user.id %>
            <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
            <%= link_to "退会する", users_quit_path, class: "btn btn-danger" %>

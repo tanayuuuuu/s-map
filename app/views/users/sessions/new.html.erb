@@ -1,25 +1,22 @@
 <div class="container">
-<h4>ログインページ</h4>
-<br/>
-
-<%= form_with model: @user, local: true, url: new_user_session_path do |f| %>
   <div class="row">
-    <label class="col-lg-3 ">メールアドレス</label>
-      <div class="col-lg-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", size:"50" %>
-      </div>
-  </div><br/>
-
-  <div class="row">
-    <label class="col-lg-3">パスワード</label>
-      <div class="col-lg-3">
-        <%= f.password_field :password, autocomplete: "current-password", size:"50" %>
-      </div>
-  </div><br/>
-
-  <div class="row">
-    <div class="col-lg-3">
-    <%= f.submit "Log in", class:"btn btn-primary col-3" %>
+    <h4>ログインページ</h4>
+    <div class="col">
+    <%= form_with model: @user, local: true, url: new_user_session_path do |f| %>
+        <ul class="list-unstyled">
+          <li>
+            <%= f.label :email, "E-mail", class:"mt-2"%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", size:"30", class:"float-right mt-2" %>
+          </li>
+          <li>
+            <%= f.label :encrypted_password, "パスワード", class:"mt-1" %>
+            <%= f.password_field :password, autocomplete: "current-password", size:"30", class:"float-right mt-1" %>
+          </li></br>
+          <li>
+            <%= f.submit "Log in", class:"btn btn-primary col-3 float-right" %>
+          </li>
+        </ul>
+    <% end %>
     </div>
   </div>
-<% end %>
+</div>

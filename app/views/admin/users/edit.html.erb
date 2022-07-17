@@ -1,29 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mt-2">
-       <h1>ユーザー編集</h1>
-       <table class="table">
-            <thead class=""></thead>
-              <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
-              <tr><td><%= f.label :name, "名前" %>
-              <%= f.text_field :name %></td></tr>
-             <br/>
-              <tr><td><%= f.label :name_kana, "フリガナ" %>
-              <%= f.text_field :name_kana %></td></tr>
-              <br/>
-              <tr><td><%= f.label :email, "メールアドレス" %>
-              <%= f.email_field :email %></td></tr>
-              <br/>
-              <tr><td><%= f.label :post_code, "郵便番号" %>
-              <%= f.text_field :post_code %></td></tr>
-              <br/>
-              <tr><td><%= f.label :address, "住所" %>
-              <%= f.text_field :address %></td></tr>
-              <br/>
-              <tr><td><%= f.label :phone_number, "電話番号" %>
-              <%= f.text_field :phone_number %></td></tr>
-              <td><%= f.submit "変更", class:"btn btn-success" %></td>
-            </div>
-            <% end %>
+    <div class="col mt-2">
+       <h3>ユーザー編集</h3>
+          <ul style="list-style: none">
+            <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+            <li>
+              <%= f.label :name, "名前" %>
+              <%= f.text_field :name, class:"float-right" %>
+            </li>
+            <li>
+              <%= f.label :name_kana, "フリガナ" %>
+              <%= f.text_field :name_kana, class:"float-right mt-1" %>
+            </li>
+            <li>
+              <%= f.label :email, "E-mail" %>
+              <%= f.text_field :email, class:"float-right mt-1" %>
+            </li>
+            <li>
+              <%= f.label :post_code, "郵便番号" %>
+              <%= f.text_field :post_code, class:"float-right mt-1" %>
+            </li>
+            <li>
+              <%= f.label :address, "住所" %>
+              <%= f.text_field :address, class:"float-right mt-1" %>
+            </li>
+            <li>
+              <%= f.label :phone_number, "電話番号" %>
+              <%= f.text_field :phone_number, class:"float-right mt-1" %>
+            </li></br>
+            <li><%= f.submit "変更", class:"btn btn-success float-right" %></li>
+          </ul>
+        <% end %>
+    </div>
   </div>
 </div>

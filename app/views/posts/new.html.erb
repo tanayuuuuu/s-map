@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-md-12 mt-2">
       <%= form_with model: @post, url: user_posts_path, local: true do |f| %>
-      <h2>新規投稿</h2>
+      <h3>新規投稿</h3>
         <ul style="list-style: none">
           <li class="d-flex justify-content-between mb-3">
             <%= f.label :place_name, "場所の名前" %>
             <%= f.text_field :place_name, style: "width: 150px" %>
-          <li>
+          <li></br>
           <li class="d-flex justify-content-between">
             <%= f.label :body, "詳細説明" %>
             <%= f.text_area :body, style: "width: 150px" %>
