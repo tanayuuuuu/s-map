@@ -51,7 +51,7 @@
     </div>
 
     <div class="col-auto list-inline">
-      <% if admin_signed_in? %>
+      <% if admin_signed_in? && !user_signed_in? %>
       <ul class="list-group list-group-horizontal list-unstyled">
         <li class="mr-3">
           <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class:"link" %>
@@ -63,7 +63,7 @@
           <%= link_to "ユーザー一覧", admin_users_path, class:"link" %>
         </li>
       </ul>
-      <% else %>
+      <% elsif !user_signed_in? && !admin_signed_in? %>
         <li class="mt-5">
           <%= link_to "管理者の方はこちら", new_admin_session_path,class: "btn btn-warning" %>
         </li>
