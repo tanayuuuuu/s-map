@@ -5,25 +5,26 @@
       <table class="table table-bordered table-sm">
             <thead class=""></thead>
               <tr><th>投稿者名</th><td><%= @post.user.name %>さん</td></tr>
-              <tr><th>場所の画像</th><td><%= image_tag @post.image, size:"150x150" %></td></tr>
+              <tr><th>場所の画像</th><td><%= image_tag @post.image, size:"125x125" %></td></tr>
               <tr><th>場所の名前</th><td><%= @post.place_name %></td></tr>
               <tr><th>詳細</th><td><%= @post.body %></td></tr>
               <tr><th>カテゴリ</th><td><%= @post.categories.pluck(:name).join(", ") %></td></tr>
               <tr><th>緯度</th></th><td><%= @post.latitude %></td></tr>
               <tr><th>経度</th><td><%= @post.longitude %></td></tr>
                <tr><th>コメント件数</th><td><%= link_to "#{@post.comments.count}件",  user_post_comments_path(@user, @post) %></td></tr>
-
+      </table>
+        <div class="">
                 <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
                   <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
-                    <%= f.text_area :comment_contents, placeholder: "コメントをここに" %>
-                    <%= f.submit "送信する", class:"form_control btn btn-primary" %>
+                    <%= f.text_area :comment_contents, placeholder: "コメント記入欄" %>
+                    <%= f.submit "コメント送信", class:"form_control btn btn-primary float-right" %>
                   <% end %>
                 </td>
               <% if @user.id == current_user.id %>
                 <td><%= link_to "編集する", edit_user_post_path(@post.user, @post), class:"btn btn-success" %></td>
                 <td><%= link_to "削除する", user_post_path(@post.user, @post), method: :delete,class:"btn btn-warning" %></td>
               <% end %>
-        </table>
+        </div>
     </div>
   </div>
 </div>

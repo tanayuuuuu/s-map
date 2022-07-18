@@ -14,8 +14,8 @@
             <%= comment.comment_contents %>
           </li>
           <li>
-            <!--<% if current_user.id == comment.user.id %> #質問箇所-->
-              <%= link_to "削除", user_post_comment_path(user_id: @post.user_id, post_id: @post.id), method: :delete %>
+            <% if current_user.id == comment.user.id %>
+              <%= link_to "削除", user_post_comment_path(comment.user.id, comment.post.id, comment.id), method: :delete,class:"float-right btn btn-danger" %>
             <% end %>
           </li>
            <% end %>

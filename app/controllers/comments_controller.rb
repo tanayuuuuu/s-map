@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
   def index
     @post= Post.find(params[:post_id])
     @posts = Post.all
-
   end
 
   def destroy
