@@ -31,7 +31,7 @@ devise_for :users, controllers: {
   patch 'users/out' => "users#out"
   resources :users, except: [:new, :destroy] do
     resources :posts do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy, :index]
     end
   end
   resources :categories, only: [:index, :show]

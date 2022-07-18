@@ -19,6 +19,8 @@
       <div class="row">
         <div class="col-4">
            <div><%= yield %></div>
+           <input id="addressText">
+           <input type="button" value="マップ検索" onclick="codeAddress()">
         </div>
         <div class="col-8">
           <div id='map'>
@@ -26,11 +28,6 @@
         </div>
       </div>
     </div>
-
-
-    <input id="addressText">
-    <input type="button" value="検索" onclick="codeAddress()">
-
 
     <style>
     #map {

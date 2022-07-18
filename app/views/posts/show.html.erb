@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 mt-2">
-      <h2>投稿詳細</h2>
+    <div class="col mt-2">
+      <h3>投稿詳細</h3>
       <table class="table table-bordered table-sm">
             <thead class=""></thead>
               <tr><th>投稿者名</th><td><%= @post.user.name %>さん</td></tr>
@@ -11,17 +11,12 @@
               <tr><th>カテゴリ</th><td><%= @post.categories.pluck(:name).join(", ") %></td></tr>
               <tr><th>緯度</th></th><td><%= @post.latitude %></td></tr>
               <tr><th>経度</th><td><%= @post.longitude %></td></tr>
-               <tr><th>コメント件数</th><td><%= @post.comments.count %></td></tr>
+               <tr><th>コメント件数</th><td><%= link_to "#{@post.comments.count}件",  user_post_comments_path(@user, @post) %></td></tr>
 
-               <td><% @post.comments.each do |comment| %>
-                    <%= comment.comment_contents %>
-                    <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%#= comment.comment_content %>
-                    <% end %>
-                </td>
-                <td>    <!--全然動かなかったため、URLと引数も明示的に指定-->
+                <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
                   <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
                     <%= f.text_area :comment_contents, placeholder: "コメントをここに" %>
-                    <%= f.submit "送信する" %>
+                    <%= f.submit "送信する", class:"form_control btn btn-primary" %>
                   <% end %>
                 </td>
               <% if @user.id == current_user.id %>

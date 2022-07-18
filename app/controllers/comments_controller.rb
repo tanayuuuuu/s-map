@@ -9,7 +9,15 @@ class CommentsController < ApplicationController
     redirect_to user_post_path(@post.user, @post)
   end
 
+  def index
+    @post= Post.find(params[:post_id])
+    @posts = Post.all
+
+  end
+
   def destroy
+    Comment.find(params[:id]).destroy
+   # redirect_to post_path
 
   end
 

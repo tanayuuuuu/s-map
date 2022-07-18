@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @categories = Category.new
-    if @post.update
+    if @post.update(post_params)
       redirect_to user_posts_path
     else
       render :index
@@ -50,6 +50,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
+    byebug
     params.require(:post).permit(:place_name, :body, :latitude, :longitude, :image, :name, category_ids: [])
   end
 

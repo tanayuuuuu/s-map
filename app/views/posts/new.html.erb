@@ -4,7 +4,7 @@
       <%= form_with model: @post, url: user_posts_path, local: true do |f| %>
       <h3>新規投稿</h3>
         <ul style="list-style: none">
-          <li class="d-flex justify-content-between mb-3">
+          <li class="d-flex justify-content-between">
             <%= f.label :place_name, "場所の名前" %>
             <%= f.text_field :place_name, style: "width: 150px" %>
           <li></br>
@@ -13,7 +13,7 @@
             <%= f.text_area :body, style: "width: 150px" %>
           </li>
           <li class="d-flex justify-content-between"><%= f.label :name, "カテゴリ名" %></li>
-          <li class="mb-3">
+          <li>
               <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |b| %>
                 <%= b.label { b.check_box + b.text } %>
               <% end %>
@@ -31,7 +31,7 @@
               <%= f.text_field :longitude, :value => "経度", id: :lng %>
           </li>
         </ul>
-        <%= f.submit "投稿" %>
+        <%= f.submit "投稿", class:"btn btn-success float-right" %>
       <% end %>
     </div>
   </div>

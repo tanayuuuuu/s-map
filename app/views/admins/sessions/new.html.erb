@@ -13,15 +13,13 @@
         <li><%= f.label :encrypted_password, "パスワード" %></br>
             <%= f.password_field :password, autocomplete: "current-password", size:"25" %>
         </li>
-
-        <div class="text-right">
-          <%= f.submit "ログイン", class:"btn btn-primary mt-3 <ml-auto></ml-auto>" %>
-        </div>
-        <% end %>
       </ul>
-
-      <h6>管理者登録が済んでいない方は、</br>下記サポートセンターにご連絡ください</h6>
-      <h5>連絡先：0120-123-456</h5>
+        <div class="text-right">
+          <%= f.submit "ログイン", class:"btn btn-primary mt-2 <ml-auto></ml-auto>" %>
+        <% end %>
+      <h6 class="text-left">管理者登録が済んでいない方は、</br>下記サポートセンターにご連絡ください</h6>
+      <h5 class="text-left">連絡先：0120-123-456</h5>
+       </div>
       </div>
     </div>
 </div>
