@@ -50,7 +50,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    byebug
     params.require(:post).permit(:place_name, :body, :latitude, :longitude, :image, :name, category_ids: [])
   end
 

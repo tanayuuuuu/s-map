@@ -28,8 +28,8 @@
         </li>
       </ul>
          <% if user_signed_in? && @user.id == current_user.id %>
-           <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success" %>
-           <%= link_to "退会する", users_quit_path, class: "btn btn-danger" %>
+           <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success mb-3" %>
+           <%= link_to "退会する", users_quit_path, class: "btn btn-danger mb-3" %>
          <% end %>
     </div>
   </div>
