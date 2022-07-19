@@ -16,12 +16,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @categories = Category.new
-    if @post.update(post_params)
-      redirect_to user_posts_path
-    else
-      render :index
-    end
+    @categories = Category.all
   end
 
   def index
@@ -42,6 +37,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    # @categories = Category.new
+    if @post.update(post_params)
+      redirect_to user_posts_path
+    else
+      render :index
+    end
   end
 
   def search

@@ -1,12 +1,23 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
       <h3>マイページ</h3>
-      <ul class="list-unstyled">
-        <li>
-          <label>氏名</label> :
-          <%= current_user.name %>
-        <li>
+         <div class="row">
+          <div class="label">
+            <div class="col-md-4">氏名</div>
+            <div class="col-md-8"><%= current_user.name %></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="label">
+            <div class="col-md-4">フリガナ</div>
+            <div class="col-md-8"><%= current_user.name_kana %></div>
+          </div>
+        </div><div class="row">
+          <div class="label">
+            <div class="col-md-4">メールアドレス</div>
+            <div class="col-md-8"><%= current_user.email %></div>
+          </div>
+        </div>
+
           <lebal>フリガナ</lebal> :
           <%= current_user.name_kana %>
         </li>
@@ -31,7 +42,5 @@
            <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success mb-3" %>
            <%= link_to "退会する", users_quit_path, class: "btn btn-danger mb-3" %>
          <% end %>
-    </div>
-  </div>
 </div>
 
