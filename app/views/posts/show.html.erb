@@ -13,7 +13,7 @@
               <tr><th>経度</th><td><%= @post.longitude %></td></tr>
                <tr><th>コメント件数</th><td><%= link_to "#{@post.comments.count}件",  user_post_comments_path(@user, @post) %></td></tr>
       </table>
-        <div class="">
+        <div class="form-group">
                 <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
                   <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
                     <%= f.text_area :comment_contents, placeholder: "コメント記入欄" %>

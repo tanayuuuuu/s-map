@@ -8,8 +8,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      redirect_to user_posts_path(@post.user)
+    else
+      render :new
     end
-    redirect_to user_posts_path
   end
 
   def edit
@@ -49,8 +51,8 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.permit(:place_name, :body, :latitude, :longitude, :image, :name, category_ids: [])
+  def post_params  #requireいらないのか？？？エラー確認箇所
+    params.require(:post).permit(:place_name, :body, :latitude, :longitude, :image, :name, :user_id, category_ids: [])
   end
 
 end
