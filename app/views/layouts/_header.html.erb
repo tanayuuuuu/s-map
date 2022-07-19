@@ -1,11 +1,13 @@
 <div class="container-fluid p-3 mb-2 bg-info text-white">
   <div class="row d-flex justify-content-around">
     <div class="col-auto">
-      <div class="display-4"><%= link_to "s-map", root_path, class:"s-map" %></div>
+      <div class="site-image">
+        <%= image_tag "S-map.png", class:"size:50x50" %>
+      </div>
     </div>
-    <div class="col-auto mt-3 list-inline">
+      <div class="col-auto mt-3 list-inline">
       <% if user_signed_in? %>
-      <ul class="list-group list-group-horizontal list-unstyled">
+      <ul class="list-group list-group-horizontal list-unstyled font-weight-bold">
        <li class="mr-3 mt-5">
           <%= link_to "新規投稿", new_user_post_path(current_user), class:"link" %>
         </li>
@@ -33,11 +35,11 @@
       <% end %>
     </div>
 
-    <div class="col-auto mt-5 list-inline">
+
       <!--user && !admin ⇒ ログアウトボタンを表示-->
       <!--!user && admin ⇒ ログアウトボタン非表示-->
       <!--!user && !admin ⇒ ログインボタンを表示-->
-
+    <div class="col-auto mt-5 list-inline font-weight-bold">
 
       <% if user_signed_in? && !admin_signed_in? %>
       <li class="mt-3">
@@ -52,7 +54,7 @@
 
     <div class="col-auto list-inline">
       <% if admin_signed_in? && !user_signed_in? %>
-      <ul class="list-group list-group-horizontal list-unstyled">
+      <ul class="list-group list-group-horizontal list-unstyled font-weight-bold">
         <li class="mr-3">
           <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class:"link" %>
         </li>
