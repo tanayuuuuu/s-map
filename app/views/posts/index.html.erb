@@ -1,28 +1,30 @@
 <div class="conteiner">
   <div class="row">
-    <div class="col-auto mt-2">
-      <h3>投稿一覧</h3>
-    </div>
-    <div class="col-auto mt-3">
+    <div class="col-md-4"><h3>投稿一覧</h3></div>
+    <div class="col-md-8">
       <%= form_tag(posts_search_path, method: "get") do %>
-      <%= select_tag :name, options_from_collection_for_select(Category.all, :id, :name) %>
-      <%= submit_tag "絞り込み" %>
+        <%= select_tag :name, options_from_collection_for_select(Category.all, :id, :name) %>
+        <%= submit_tag "絞り込み" %>
       <% end %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col mt-2">
-      <% @posts.each do |post| %>
-      <table class="table table-bordered table-sm">
-            <thead class=""></thead>
-              <tr><th>投稿ID</th><td><%= post.id %></td></tr>
-              <tr><th>投稿者名</th><td><%= post.user.name %>さん</td></tr>
-              <tr><th>場所の名前</th><td><%= post.place_name %></td></tr>
-               <tr><th>コメント</th><td><%= "#{post.comments.count} コメント" %></td></tr>
-              <td><%= link_to "詳細情報", user_post_path(post.user, post), class:"btn btn-warning" %></td>
-      </table>
-      <% end %>
+  <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col-md-4">投稿ID</div>
+      <div class="col-md-8"><%= post.id %></div>
     </div>
-  </div>
+    <div class="row mt-2">
+      <div class="col-md-4">投稿者名</div>
+      <div class="col-md-8"><%= post.user.name %>さん</div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-4">場所の名前</div>
+      <div class="col-md-8"><%= post.place_name %></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-3">コメント</div>
+      <div class="col-md-5 text-center"><%= "#{post.comments.count} コメント" %></div>
+      <div class="col-md-4 text-right"><%= link_to "詳細情報", user_post_path(post.user, post), class:"btn btn-warning" %></div>
+    </div>
+    <% end %>
 </div>

@@ -1,17 +1,9 @@
 <div class="container">
+  <h3>カテゴリ編集</h3>
+  <%= form_with model: @category, url: admin_category_path(@category.id), local: true do |f| %>
   <div class="row">
-    <div class="col mt-2">
-      <h3>カテゴリ編集</h3>
-      <%= form_with model: @category, url: admin_category_path(@category.id), local: true do |f| %>
-        <ul class="list-unstyled">
-          <li>
-            <%= f.text_field :name %>
-          </li></br>
-          <li>
-              <%= f.submit "変更を保存する", class: "btn btn-primary" %>
-          </li>
-        </ul>
-      <% end %>
-    </div>
+    <div class="col-md-4 mt-2"><%= f.text_field :name %></div>
+    <div class="col-md-8 text-right mt-2"><%= f.submit "変更を保存する", class: "btn btn-primary" %></div>
   </div>
+  <% end %>
 </div>

@@ -1,45 +1,38 @@
 <div class="container">
-   <div class = "row">
-     <div class="col-auto">
-       <h3>登録情報編集</h3>
-       <%= form_with model: @user, local: true do |f| %>
-         <ul class="list-unstyled">
-           <li>
-             <%= f.label :name, "氏名" %>
-             <%= f.text_field :name, class: "form-control" %>
-           </li>
-           <li>
-             <%= f.label :name_kana, "フリガナ" %>
-             <%= f.text_field :name_kana, class: "form-control" %>
-           </li>
-           <li>
-             <%= f.label :email, "E-mail" %>
-             <%= f.email_field :email, class: "form-control" %>
-           </li>
-           <li>
-             <%= f.label :post_code, "郵便番号" %>
-             <%= f.text_field :post_code, class: "form-control" %>
-           </li>
-           <li>
-             <%= f.label :address, "住所" %>
-             <%= f.text_field :address, class: "form-control" %>
-           </li>
-           <li>
-             <%= f.label :phone_number, "電話番号" %>
-             <%= f.text_field :phone_number, class: "form-control" %>
-           </li>
-             <div class="form-group">
-               <div class="form-inline">
-                 <li>
-                   <%= f.submit "編集内容を保存する", class: "form-control btn btn-primary mr-4 mt-3" %>
-                 </li>
-                 <li>
-                   <%= link_to "戻る", user_path(@user), class: "form-control btn btn-secondary mt-3" %>
-                 </li>
-               </div>
-             </div>
-         </ul>
+    <h3>登録情報編集</h3>
+        <%= form_with model: @user, local: true do |f| %>
+            <div class = "row mt-4">
+                <div class="col-md-4"> <%= f.label :name, "氏名", class:"font-weight-bold" %></div>
+                <div class="col-md-8"><%= f.text_field :name, class: "form-control" %></div>
+            </div>
+            <div class = "row mt-2">
+                <div class="col-md-4"><%= f.label :name_kana, "フリガナ", class:"font-weight-bold" %></div>
+                <div class="col-md-8"><%= f.text_field :name_kana, class: "form-control" %></div>
+            </div>
+            <div class = "row mt-2">
+                <div class="col-md-4"><%= f.label :email, "E-mail", class:"font-weight-bold" %></div>
+                <div class="col-md-8"><%= f.email_field :email, class: "form-control" %>
+           </li></div>
+            </div>
+            <div class = "row mt-2">
+                <div class="col-md-4"><%= f.label :post_code, "郵便番号", class:"font-weight-bold" %></div>
+                <div class="col-md-8"><%= f.text_field :post_code, class: "form-control" %></div>
+            </div>
+            <div class = "row mt-2">
+                <div class="col-md-4"><%= f.label :address, "住所", class:"font-weight-bold" %></div>
+                <div class="col-md-8"><%= f.text_field :address, class: "form-control" %></div>
+            </div>
+            <div class = "row mt-2">
+                <div class="col-md-4"><%= f.label :phone_number, "電話番号", class:"font-weight-bold" %></div>
+                <div class="col-md-8"><%= f.text_field :phone_number, class: "form-control" %></div>
+            </div>
+            <div class="row mt-4">
+                <div class="form-group">
+                    <div class="form-inline">
+                        <%= f.submit "編集内容を保存する", class: "form-control btn btn-primary mr-5" %>
+                        <%= link_to "戻る", user_path(@user), class: "form-control btn btn-secondary" %>
+                    </div>
+                </div>
+            </div>
       <% end %>
-    </div>
-  </div>
 </div>

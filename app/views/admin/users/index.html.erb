@@ -6,7 +6,7 @@
       <table class="table table-bordered table-sm">
             <thead class=""></thead>
               <tr><th>ユーザーID</th><td><%= user.id %></td></tr>
-              <tr><th>氏名</th><td><%= user.name %></td></tr>
+              <tr><th>氏名</th><td><%= user.name %>さん</td></tr>
               <tr><th>住所</th><td><%= user.address %></td></tr>
               <td><%= link_to "詳細情報", admin_user_path(user.id), class:"btn btn-warning" %></td>
         </table>

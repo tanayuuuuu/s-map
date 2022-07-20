@@ -1,30 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-auto">
-      <h3>コメント一覧</h3>
-      <h6><%= @post.place_name %>についてのコメント</h6>
-        <ul class="list-unstyled">
-          <% @post.comments.each do |comment| %>
-          <li>
-            <label>No</label>
-            <%= comment.id %>
-          </li>
-          <li>
-            <label>コメント詳細</label>
+  <h3>コメント一覧</h3>
+    <h6><%= @post.place_name %>についてのコメント</h6>
+      <% @post.comments.each do |comment| %>
+        <div class="row mt-2">
+          <div class="col-md-12">No<%= comment.id %></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <%= comment.comment_contents %>
-          </li>
-          <li>
-            <% if current_user.id == comment.user.id %>
-              <%= link_to "削除", user_post_comment_path(comment.user.id, comment.post.id, comment.id), method: :delete,class:"float-right btn btn-danger" %>
-            <% end %>
-          </li>
-           <% end %>
-        </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-auto">
-      <%= link_to "戻る", user_post_path(@post.user, @post), class:"btn btn-danger mb-3" %>
-    </div>
-  </div>
+          </div>
+        </div>
+        <% if current_user.id == comment.user.id %>
+        <div class="row">
+          <div class="col-md-6"><%= link_to "削除", user_post_comment_path(comment.user.id, comment.post.id, comment.id), method: :delete,class:"btn btn-danger" %></div>
+          <div class="col-md-6"><%= link_to "戻る", user_post_path(@post.user, @post), class:"btn btn-success" %></div>
+        <% end %>
+        </div>
+        <% end %>
 </div>
