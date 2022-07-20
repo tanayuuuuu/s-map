@@ -27,7 +27,11 @@ https://www.dreamnews.jp/press/0000251230/, (2022/7/2)]
 
 
 ## 設計書
-未着手
+-　ワイヤーフレーム
+-　アプリケーション詳細設計書
+-　テーブル定義書
+-　ER図
+
 
 ## 開発環境
 
@@ -38,5 +42,5 @@ https://www.dreamnews.jp/press/0000251230/, (2022/7/2)]
 - IDE：Cloud9
 
 ## 使用素材
-- Fontawesome,Google Maps API
-- （現段階では使用検討中です）
+- Google Maps API（Maps JavaScript API, Geocoding API）
+- Gem (devise, mysql2, geocoder, gmaps4rails, dotenv-rails)

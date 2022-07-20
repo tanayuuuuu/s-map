@@ -1,16 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col mt-2">
-      <h3>ユーザー一覧</h3>
-      <% @users.each do |user| %>
-      <table class="table table-bordered table-sm">
-            <thead class=""></thead>
-              <tr><th>ユーザーID</th><td><%= user.id %></td></tr>
-              <tr><th>氏名</th><td><%= user.name %>さん</td></tr>
-              <tr><th>住所</th><td><%= user.address %></td></tr>
-              <td><%= link_to "詳細情報", admin_user_path(user.id), class:"btn btn-warning" %></td>
-        </table>
-        <% end %>
+  <h3>ユーザー一覧</h3>
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-md-4 font-weight-bold">ユーザーID</div>
+      <div class="col-md-8"><%= user.id %></div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-4 font-weight-bold">氏名</div>
+      <div class="col-md-8"><%= user.name %>さん</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 font-weight-bold">住所</div>
+      <div class="col-md-8"><%= user.address %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to "詳細情報", admin_user_path(user.id), class:"btn btn-warning" %>
+      </div>
+    </div>
+  <% end %>
 </div>
