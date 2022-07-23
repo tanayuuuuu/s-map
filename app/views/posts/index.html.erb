@@ -27,4 +27,7 @@
       <div class="col-md-4 text-right"><%= link_to "詳細情報", user_post_path(post.user, post), class:"btn btn-warning" %></div>
     </div>
     <% end %>
+    <div class="pagination">
+      <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+    </div>
 </div>

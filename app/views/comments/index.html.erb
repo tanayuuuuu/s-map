@@ -1,7 +1,7 @@
 <div class="container">
   <h3>コメント一覧</h3>
     <h6><%= @post.place_name %>についてのコメント</h6>
-      <% @post.comments.each do |comment| %>
+      <% @comments.each do |comment| %>
         <div class="row mt-2">
           <div class="col-md-12">No<%= comment.id %></div>
         </div>
@@ -17,4 +17,7 @@
         <% end %>
         </div>
         <% end %>
+        <div class="pagination">
+          <%= paginate @comments, theme: 'twitter-bootstrap-4' %>
+        </div>
 </div>

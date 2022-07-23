@@ -43,4 +43,4 @@ https://www.dreamnews.jp/press/0000251230/, (2022/7/2)]
 
 ## 使用素材
 - Google Maps API（Maps JavaScript API, Geocoding API）
-- Gem (devise, mysql2, geocoder, gmaps4rails, dotenv-rails)
+- Gem (devise, mysql2, geocoder, gmaps4rails, dotenv-rails, kaminari)
