@@ -13,18 +13,19 @@
               <tr><th>経度</th><td><%= @post.longitude %></td></tr>
                <tr><th>コメント件数</th><td><%= link_to "#{@post.comments.count}件",  user_post_comments_path(@user, @post) %></td></tr>
       </table>
-        <div class="form-group">
-                <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
-                  <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
-                    <%= f.text_area :comment_contents, placeholder: "コメント記入欄" %>
-                    <%= f.submit "コメント送信", class:"form_control btn btn-primary float-right" %>
-                  <% end %>
-                </td>
-              <% if @user.id == current_user.id %>
-                <td><%= link_to "編集する", edit_user_post_path(@post.user, @post), class:"btn btn-success" %></td>
-                <td><%= link_to "削除する", user_post_path(@post.user, @post), method: :delete,class:"btn btn-warning" %></td>
-              <% end %>
-        </div>
+      
+      <div class="form-group">
+              <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
+                <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
+                  <%= f.text_area :comment_contents, placeholder: "コメント記入欄" %>
+                  <%= f.submit "コメント送信", class:"form_control btn btn-primary float-right" %>
+                <% end %>
+              </td>
+            <% if @user.id == current_user.id %>
+              <td><%= link_to "編集する", edit_user_post_path(@post.user, @post), class:"btn btn-success" %></td>
+              <td><%= link_to "削除する", user_post_path(@post.user, @post), method: :delete,class:"btn btn-warning" %></td>
+            <% end %>
+      </div>
     </div>
   </div>
 </div>
