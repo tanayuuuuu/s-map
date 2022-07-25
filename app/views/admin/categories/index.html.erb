@@ -8,7 +8,7 @@
     <% end %>
     <% @categories.each do |category| %>
     <div class="row mt-4">
-      <div class="col-md-4"><%= category.name %></div>
+      <div class="col-md-4 font-weight-bold"><%= category.name %></div>
       <div class="col-md-4"><%= link_to "カテゴリ編集", edit_admin_category_path(category) %></div>
       <div class="col-md-4"><%= link_to "カテゴリ削除", admin_category_path(category), method: :delete, class: "btn btn-danger" %></div>
     </div>

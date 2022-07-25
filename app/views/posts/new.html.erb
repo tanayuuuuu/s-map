@@ -20,7 +20,7 @@
     <div class="row mt-2">
       <div class="col-md-4"><%= f.label :name, "カテゴリ名", class:"font-weight-bold" %></div>
       <div class="col-md-8 text-right">
-        <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |b| %>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
           <%= b.label { b.check_box + b.text } %>
         <% end %>
       </div>

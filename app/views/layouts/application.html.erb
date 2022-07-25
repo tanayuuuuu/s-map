@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body>　
     <header>
        <%= render "layouts/header" %>
     </header>
@@ -23,8 +23,7 @@
            <div class="mt-2"><%= yield %></div>
         </div>
         <div class="col-8">
-          <div id='map'>
-          </div>
+          <div id='map'></div>
         </div>
       </div>
     </div>
@@ -37,22 +36,24 @@
 
     <script>//最初に表示するMapの設定
     function initMap(){          //関数initMapを定義
-      mapInstance = new google.maps.Map(document.getElementById('map'), {      //変数mapInstance = newで空箱とし、id=mapのHTML要素を取得
-        center: {lat: 35.680, lng: 139.767},  //初期表示の場所
+      mapInstance = new google.maps.Map(document.getElementById('map'), {      //変数mapInstance = newで空箱とし、id=mapのHTML要素を取得//google.maps.MapsはGoogleのメソッド
+        center: {lat: 35.680, lng: 139.767},  //初期表示の場所（東京の緯度経度で設定）
         zoom: 12                              //初期表示の縮尺
       });
 
 
       var position = new google.maps.LatLng({     //変数position = 空箱として'lat''lng'に緯度経度を設定
         "lat": 35.680,
-        "lng": 139.767, <%#= @post.longitude %>//投稿に緯度経度が保存できたら変更
+        "lng": 139.767, //投稿に緯度経度が保存できたら変更
       });
       var marker = [];   //変数markerを空の配列とする
       var info = [];     //変数infoを空の配列とする
 
-
+       //下記each文をif文の条件下で表示させる。（サインインしている＆）カレントユーザーが存在している＆投稿詳細ページを表示するとき
        <% if signed_in? && current_user.present? && current_page?(user_posts_path(current_user)) %>
-
+　　　　　　　　//each文のpostをJSの関数に入れる。
+　　　　　　　　//let markerLatLang = newで緯度経度を入れる空のマーカーを作成
+　　　　　　　　//let marker = newで実際にピンを立てる空のマーカーを設定
                <% @posts.each do |post| %>
                   (function() {
                   let markerLatLng = new google.maps.LatLng({lat: <%= post.latitude %>, lng: <%= post.longitude %>}); // 緯度経度のデータ作成
@@ -79,7 +80,7 @@
           }
 
 
-       //検索後のマップ作成
+       //検索した場所のマップ表示
       function codeAddress(){
         const geocoder = new google.maps.Geocoder()
         let inputAddress = document.getElementById('addressText').value;

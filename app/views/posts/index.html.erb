@@ -8,10 +8,10 @@
       <% end %>
     </div>
   </div>
-  <% @posts.each do |post| %>
+  <% @posts.each.with_index(1) do |post, i| %>
     <div class="row">
-      <div class="col-md-4">投稿ID</div>
-      <div class="col-md-8"><%= post.id %></div>
+      <div class="col-md-4">No.</div>
+      <div class="col-md-8"><%= i %></div>
     </div>
     <div class="row mt-2">
       <div class="col-md-4">投稿者名</div>

@@ -16,9 +16,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-   # redirect_to post_path
-
+    @comment = Comment.find(params[:id])
+    post = @comment.post
+    if @comment.destroy      #２０行目書かないのであれば@comment.post_idを引数にしてもＯＫ
+      redirect_to user_post_comments_path(@comment.user, post.id)
+    end
   end
 
   private
