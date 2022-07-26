@@ -11,44 +11,38 @@
               </div>
               <div class="form-group">
                 <div class="row">
-                  <div class="col-md-5"><%= f.label :name, "名前" %></div>
-                  <div class="col-md-7"><%= f.text_field :name, class: 'form-control' %></div>
+                  <div class="col-md-5"><%= f.label :name_kana, "フリガナ", class:"font-weight-bold" %></div>
+                  <div class="col-md-7"><%= f.text_field :name_kana, class: 'form-control' %></div>
                 </div>
               </div>
               <div class="form-group">
                 <div class="row">
-                  <div class="col-md-5"><%= f.label :name, "名前" %></div>
-                  <div class="col-md-7"><%= f.text_field :name, class: 'form-control' %></div>
+                  <div class="col-md-5"><%= f.label :email, "メールアドレス", class:"font-weight-bold" %></div>
+                  <div class="col-md-7"><%= f.email_field :email, class: 'form-control' %></div>
                 </div>
               </div>
-           <ul style="list-style: none">
-            <li>
-              <%= f.label :name, "名前" %>
-              <%= f.text_field :name, class:"float-right" %>
-            </li>
-            <li>
-              <%= f.label :name_kana, "フリガナ" %>
-              <%= f.text_field :name_kana, class:"float-right mt-1" %>
-            </li>
-            <li>
-              <%= f.label :email, "E-mail" %>
-              <%= f.text_field :email, class:"float-right mt-1" %>
-            </li>
-            <li>
-              <%= f.label :post_code, "郵便番号" %>
-              <%= f.text_field :post_code, class:"float-right mt-1" %>
-            </li>
-            <li>
-              <%= f.label :address, "住所" %>
-              <%= f.text_field :address, class:"float-right mt-1" %>
-            </li>
-            <li>
-              <%= f.label :phone_number, "電話番号" %>
-              <%= f.text_field :phone_number, class:"float-right mt-1" %>
-            </li></br>
-            <li><%= f.submit "変更", class:"btn btn-success float-right" %></li>
-          </ul>
-        <% end %>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-5"><%= f.label :post_code, "郵便番号", class:"font-weight-bold" %></div>
+                  <div class="col-md-7"><%= f.text_field :post_code, class: 'form-control' %></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-5"><%= f.label :address, "住所", class:"font-weight-bold" %></div>
+                  <div class="col-md-7"><%= f.text_field :address, class: 'form-control' %></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-5"><%= f.label :phone_number, "電話番号", class:"font-weight-bold" %></div>
+                  <div class="col-md-7"><%= f.text_field :phone_number, class: 'form-control' %></div>
+                </div>
+              </div>
+              <div class="form-group">
+                 <%= f.submit "変更", class:"btn btn-success float-right" %>
+              </div>
+            <% end %>
     </div>
   </div>
 </div>
