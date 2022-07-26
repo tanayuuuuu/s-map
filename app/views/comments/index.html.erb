@@ -1,7 +1,7 @@
 <div class="container">
   <h3>コメント一覧</h3>
-    <h6><%= @post.place_name %>についてのコメント</h6>
-      <% @comments.each.with_index(1) do |comment, i| %>
+    <h6 class="font-weight-bold"><%= @post.place_name %>についてのコメント</h6>
+      <% @comments.each.with_index(@start + 1) do |comment, i| %>
         <div class="row mt-2">
           <div class="col-md-12 font-weight-bold">
             No.<%= i %>
@@ -16,8 +16,8 @@
         <div class="row">
           <div class="col-md-6"><%= link_to "削除", user_post_comment_path(comment.user.id, comment.post.id, comment.id), method: :delete,class:"btn btn-danger" %></div>
           <div class="col-md-6"><%= link_to "戻る", user_post_path(@post.user, @post), class:"btn btn-success" %></div>
-        <% end %>
         </div>
+      <% end %>
       <% end %>
         <div class="pagination">
           <%= paginate @comments, theme: 'twitter-bootstrap-4' %>

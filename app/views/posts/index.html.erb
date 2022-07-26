@@ -8,21 +8,21 @@
       <% end %>
     </div>
   </div>
-  <% @posts.each.with_index(1) do |post, i| %>
+  <% @posts.each.with_index(@start + 1) do |post, i| %>
     <div class="row">
-      <div class="col-md-4">No.</div>
+      <div class="col-md-4 font-weight-bold">No.</div>
       <div class="col-md-8"><%= i %></div>
     </div>
     <div class="row mt-2">
-      <div class="col-md-4">投稿者名</div>
+      <div class="col-md-4 font-weight-bold">投稿者名</div>
       <div class="col-md-8"><%= post.user.name %>さん</div>
     </div>
     <div class="row mt-2">
-      <div class="col-md-4">場所の名前</div>
+      <div class="col-md-4 font-weight-bold">場所の名前</div>
       <div class="col-md-8"><%= post.place_name %></div>
     </div>
     <div class="row mt-2">
-      <div class="col-md-3">コメント</div>
+      <div class="col-md-3 font-weight-bold">コメント</div>
       <div class="col-md-5 text-center"><%= "#{post.comments.count} コメント" %></div>
       <div class="col-md-4 text-right"><%= link_to "詳細情報", user_post_path(post.user, post), class:"btn btn-warning" %></div>
     </div>

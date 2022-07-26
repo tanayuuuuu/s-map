@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
   def index
     @post= Post.find(params[:post_id])
     @comments = @post.comments.page(params[:page]).per(4)
+    @start = ((params[:page] || 1 ).to_i - 1) * 4
+ 
 
   end
 

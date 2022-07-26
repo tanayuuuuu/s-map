@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(3)
-
+    @start = ((params[:page] || 1 ).to_i - 1) * 3
   end
 
   def show
