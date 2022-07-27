@@ -14,11 +14,11 @@
         </div>
         <% if current_user.id == comment.user.id %>
         <div class="row">
-          <div class="col-md-6"><%= link_to "削除", user_post_comment_path(comment.user.id, comment.post.id, comment.id), method: :delete,class:"btn btn-danger" %></div>
-          <div class="col-md-6"><%= link_to "戻る", user_post_path(@post.user, @post), class:"btn btn-success" %></div>
+          <div class="col-md-6"><%= link_to "削除", user_post_comment_path(comment.user.id, comment.post.id, comment.id), method: :delete,class:"btn btn-danger btn-sm" %></div>
         </div>
       <% end %>
       <% end %>
+        <div class="col-md-6 mt-3"><%= link_to "投稿詳細に戻る", user_post_path(@post.user, @post), class:"btn btn-success" %></div>
         <div class="pagination">
           <%= paginate @comments, theme: 'twitter-bootstrap-4' %>
         </div>
