@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>　
+  <body>
     <header>
        <%= render "layouts/header" %>
     </header>
@@ -128,7 +128,8 @@
       if (!mapInstance)
         initMap();
     } else{
-      $.ajax('https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-rdQVpBg1i4-BwQ6ofhHtnYa8tox3ac&callback=initMap', {
+
+      $.ajax('https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAPS_API_KEY"] %>&callback=initMap', {
           crossDomain: true,
           dataType: 'script'
       });
