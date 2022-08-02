@@ -6,6 +6,7 @@
             <thead class=""></thead>
               <tr><th>投稿者名</th><td><%= @post.user.name %>さん</td></tr>
               <tr><th>場所の画像</th><td><%= image_tag @post.image, size:"125x125" %></td></tr>
+              <tr><th>AIタグ</th><td><%= @post.tags.name %></td></tr>
               <tr><th>場所の名前</th><td><%= @post.place_name %></td></tr>
               <tr><th>詳細</th><td><%= @post.body %></td></tr>
               <tr><th>カテゴリ</th><td><%= @post.categories.pluck(:name).join(", ") %></td></tr>
@@ -13,7 +14,7 @@
               <tr><th>経度</th><td><%= @post.longitude %></td></tr>
                <tr><th>コメント件数</th><td><%= link_to "#{@post.comments.count}件",  user_post_comments_path(@user, @post) %></td></tr>
       </table>
-      
+
       <div class="form-group">
               <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
                 <%= form_with model: @comment, url: user_post_comments_path(user_id: @post.user_id, post_id: @post.id) do |f| %>
