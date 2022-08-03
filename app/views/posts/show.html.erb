@@ -1,19 +1,45 @@
 <div class="container">
-  <div class="row">
-    <div class="col mt-2">
-      <h3>投稿詳細</h3>
-      <table class="table table-bordered table-sm">
-            <thead class=""></thead>
-              <tr><th>投稿者名</th><td><%= @post.user.name %>さん</td></tr>
-              <tr><th>場所の画像</th><td><%= image_tag @post.image, size:"125x125" %></td></tr>
-              <tr><th>AIタグ</th><td><%= @post.tags.name %></td></tr>
-              <tr><th>場所の名前</th><td><%= @post.place_name %></td></tr>
-              <tr><th>詳細</th><td><%= @post.body %></td></tr>
-              <tr><th>カテゴリ</th><td><%= @post.categories.pluck(:name).join(", ") %></td></tr>
-              <tr><th>緯度</th></th><td><%= @post.latitude %></td></tr>
-              <tr><th>経度</th><td><%= @post.longitude %></td></tr>
-               <tr><th>コメント件数</th><td><%= link_to "#{@post.comments.count}件",  user_post_comments_path(@user, @post) %></td></tr>
-      </table>
+  <h3>投稿詳細</h3>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">投稿者名</div>
+      <div class="col-md-8"><%= @post.user.name %>さん</div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">場所の画像</div>
+      <div class="col-md-8"><%= image_tag @post.image, size:"125x125" %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">AIタグ</div>
+      <% @post.tags.each do |tag| %>
+      <span class="badge badge-info mx-1">
+        <%= tag.name %>
+      </span>
+      <% end %>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">場所の名前</div>
+      <div class="col-md-8"><%= @post.place_name %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">詳細</div>
+      <div class="col-md-8"><%= @post.body %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">カテゴリ</div>
+      <div class="col-md-8"><%= @post.categories.pluck(:name).join(", ") %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">緯度</div>
+      <div class="col-md-8"><%= @post.latitude %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">経度</div>
+      <div class="col-md-8"><%= @post.longitude %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4 font-weight-bold">コメント件数</div>
+      <div class="col-md-8"><%= link_to "#{@post.comments.count}件", user_post_comments_path(@user, @post) %></div>
+    </div>
 
       <div class="form-group">
               <td>    <!--全く動かなかったため、URLと引数も明示的に指定-->
@@ -23,10 +49,8 @@
                 <% end %>
               </td>
             <% if @user.id == current_user.id %>
-              <td><%= link_to "編集する", edit_user_post_path(@post.user, @post), class:"btn btn-success" %></td>
-              <td><%= link_to "削除する", user_post_path(@post.user, @post), method: :delete,class:"btn btn-warning" %></td>
+              <td><%= link_to "投稿を編集", edit_user_post_path(@post.user, @post), class:"btn btn-success" %></td>
+              <td><%= link_to "投稿を削除", user_post_path(@post.user, @post), method: :delete,class:"btn btn-warning" %></td>
             <% end %>
       </div>
-    </div>
-  </div>
 </div>

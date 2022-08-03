@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     if @post.save
       tags = Vision.get_image_data(@post.image)
       tags.each do |tag|
-      list.tags.create(name: tag)
+      @post.tags.create(name: tag)
       end
       redirect_to user_posts_path(@post.user)
     else

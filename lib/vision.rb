@@ -10,7 +10,7 @@ module Vision
 
       # 画像をbase64にエンコード
       dir_tree =  image_file.key.scan(/.{1,#{2}}/)
-      base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{dir_tree[0]}/#{dir_tree[1]}/#{image_file.key}").read)
+      base64_image = Base64.encode64(open("#{Rails.root}/storage/#{dir_tree[0]}/#{dir_tree[1]}/#{image_file.key}").read)
 
       # APIリクエスト用のJSONパラメータ
       params = {
@@ -35,11 +35,12 @@ module Vision
       response = https.request(request, params)
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
+
       if (error = response_body['responses'][0]['error']).present?
         raise error['message']
-      else
+      else                             #ここをVision APIの機能に合わせて変更する
         response_body['responses'][0]['labelAnnotations'].pluck('description').take(3)
-      end
+      end　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#byebugでresopnse_bodyの中を見ると[]配列でdescriptionを取得しているのが分かる。
     end
   end
 end
